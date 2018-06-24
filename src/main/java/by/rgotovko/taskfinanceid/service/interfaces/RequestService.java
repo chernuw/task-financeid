@@ -10,13 +10,7 @@ public interface RequestService {
 
     Request getById(Integer id);
 
-    Request getByName(String request);
-
-    Request update(Request request, Integer id);
-
     List<Request> getAllByStatus(Status status);
 
     List<Request> getAll();
-
-
 }
