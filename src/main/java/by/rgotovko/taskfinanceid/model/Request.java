@@ -1,5 +1,7 @@
 package by.rgotovko.taskfinanceid.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -23,6 +25,7 @@ public class Request {
     private BigDecimal bid;
 
     @Column(name = "due_date")
+    @JsonProperty("due_date")
     private LocalDate dueDate;
 
     @Column(name = "status", columnDefinition = "varchar(10) default 'OPEN'")
