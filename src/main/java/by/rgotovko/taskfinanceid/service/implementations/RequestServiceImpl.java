@@ -1,5 +1,6 @@
 package by.rgotovko.taskfinanceid.service.implementations;
 
+import by.rgotovko.taskfinanceid.exception.NoEntityException;
 import by.rgotovko.taskfinanceid.model.Request;
 import by.rgotovko.taskfinanceid.model.Status;
 import by.rgotovko.taskfinanceid.repository.RequestRepository;
@@ -23,27 +24,21 @@ public class RequestServiceImpl implements RequestService {
 
     @Override
     public Request save(Request request) {
-        return null;
+        log.info("IN RequestServiceImpl save (" + request.toString() + " )");
+        return this.requestRepository.save(request);
     }
 
     @Override
     public Request getById(Integer id) {
-        return null;
-    }
-
-    @Override
-    public Request getByName(String request) {
-        return null;
-    }
-
-    @Override
-    public Request update(Request request, Integer id) {
-        return null;
+        log.info("IN RequestServiceImpl getById (" + id + ")");
+        return this.requestRepository.findById(id)
+                .orElseThrow(() -> new NoEntityException(id.toString()));
     }
 
     @Override
     public List<Request> getAllByStatus(Status status) {
-        return null;
+        log.info("IN RequestServiceImpl getAllByStatus (" + status + ")");
+        return this.requestRepository.findAllByStatus(status);
     }
 
     @Override
